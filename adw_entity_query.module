@@ -1,0 +1,44 @@
+<?php
+
+if ( !defined('EQ_MODULE_PATH') ) {
+  define('EQ_MODULE_PATH', drupal_get_path('module', 'adw_entity_query'));
+}
+
+require_once EQ_MODULE_PATH . '/vendor/autoload.php';
+
+/**
+ * BELOW NOT USED, UNCOMMENT FOR A QUICK PROCEDURAL OPTION
+ */
+
+/*function _get_image_field(&$node, $field_name = 'field_case_study_image') {
+  return $node->{$field_name}['und'][0];
+}
+
+function adw_entity_query_get_case_study($node, $type = 'next') {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'case_study')
+    ->propertyCondition('status', 1)
+    ->range(0, 1)
+    ->addMetaData('account', user_load(1)); // run query as user 1
+
+  if ($type === 'next') {
+    $query->propertyCondition('created', $node->created, '<')
+      ->propertyOrderBy('created', 'DESC');
+  }
+
+  if ($type === 'prev') {
+    $query->propertyCondition('created', $node->created, '>')
+      ->propertyOrderBy('created', 'ASC');
+  }
+
+  $result = $query->execute();
+  sort($result['node']);
+
+  if (!isset($result['node'])) {
+    return false;
+  }
+
+  $prevNextCurrNode = node_load($result['node'][0]->nid);
+  return $prevNextCurrNode;
+}*/
